@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahit's Portfolio</title>
+    {% load static %}
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #ecf0f1;
+            --text-color: #ffffff;
+            --card-background: rgba(255, 255, 255, 0.1);
+            --box-blur: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-image: url('{% static "/images/rahit-_-java-_-django-_.png" %}');
+            background-size: cover;
+            background-position: center;
+            height: 300px; /* Fixed height to maintain size */
+            position: relative;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: -75px;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--background-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .main-content {
+            background-image: url('https://images.unsplash.com/photo-1528734445284-16e92a7c5652?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 95px 0 20px; /* Increased top padding to accommodate profile image */
+            position: relative;
+        }
+
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            background-color: var(--card-background);
+            backdrop-filter: blur(var(--box-blur));
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .skills ul, .education ul, .projects ul {
+            list-style-type: none;
+        }
+
+        .skills li, .education li, .projects li {
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .skills li:hover, .education li:hover, .projects li:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+
+        .contact input::placeholder, .contact textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-container">
+            <img src="{% static "/images/profile.png" %}" alt="Rahit Dhara" class="profile-image">
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container content-grid">
+            <section class="about">
+                <h2>About Me</h2>
+                <p>I am Rahit, from India. Currently I am pursuing B.Tech degree from Computer Science and Engineering branch, having 8.35 cgpa till now (Grad Year: 2025). I have skills on Backend Development, Core Java, Database Design.</p>
+            </section>
+
+            <section class="skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>Java</li>
+                    <li>Django</li>
+                    <li>MySQL</li>
+                </ul>
+            </section>
+
+            <section class="education">
+                <h2>Education</h2>
+                <ul>
+                    <li>B.Tech in Computer Science and Engineering<br>College of Engineering and Management, Kolaghat, 2021-present</li>
+                    <li>Lakshya High School<br>2021</li>
+                    <li>Vivekanada Mission Asram Sikshyatan (High School)<br>2019</li>
+                </ul>
+            </section>
+
+            <section class="projects">
+                <h2>Featured Projects</h2>
+                <ul>
+                    <li>Landing Page<br>HTML, CSS</li>
+                    <li>To-do List<br>HTML, CSS, JavaScript</li>
+                    <li>Medicura : Smart Medicare System (Team Lead)<br>Oracle APEX, whereby video calling API, cohere api, PL/SQL, MySQL</li>
+                </ul>
+            </section>
+
+            <section class="contact">
+                <h2>Get In Touch</h2>
+                <form>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" required rows="4"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
